@@ -1,5 +1,6 @@
 .active {
-    background-color: #a7a7a7;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
     font-weight: bold;
-    color: #000;
 }
