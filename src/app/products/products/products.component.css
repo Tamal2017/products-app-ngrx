@@ -1,0 +1,15 @@
+i:hover {
+    cursor: pointer;
+}
+
+i.fa-pencil {
+    color: #1ea1e4;
+}
+
+i.fa-trash-o {
+    color: #e84424;
+}
+
+i.fa-search-plus {
+    color: dimgrey;
+}
