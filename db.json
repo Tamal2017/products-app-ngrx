@@ -1,0 +1,9 @@
+{
+    "products": [
+        { "id": 1, "name": "Smart TV", "quantity": 1200, "available": true },
+        { "id": 2, "name": "Smart phone", "quantity": 1000, "available": true },
+        { "id": 3, "name": "Smart watch", "quantity": 0, "available": false },
+        { "id": 4, "name": "Headset", "quantity": 506, "available": true },
+        { "id": 5, "name": "HDMI cable", "quantity": 0, "available": false }
+    ]
+}
