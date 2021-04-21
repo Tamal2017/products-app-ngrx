@@ -1,0 +1,51 @@
+<div class="col-sm-9 col-md-9">
+    <ng-container *ngIf="productsState$ | async as state" [ngSwitch]="state.dataState">
+        <div *ngSwitchCase="dataStateEnum.INITIAL">
+            <div class="alert alert-info" role="alert">
+                <p>Initial state!</p>
+            </div>
+        </div>
+        <div *ngSwitchCase="dataStateEnum.LOADING">
+            <div class="alert alert-info" role="alert">
+                <p>{{state.errorMessage}}</p>
+            </div>
+        </div>
+        <div *ngSwitchCase="dataStateEnum.ERROR">
+            <div class="alert alert-danger" role="alert">
+                <p>Error!</p>
+            </div>
+        </div>
+        <div *ngSwitchCase="dataStateEnum.LOADED">
+            <div *ngIf="state.products.length > 0; else emptyMessage">
+                <h3>Liste des products</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Available</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of state.products">
+                            <td>{{product.name}}</td>
+                            <td>{{product.quantity}}</td>
+                            <td>{{product.available}}</td>
+                            <td>
+                                <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>&nbsp;
+                                <i class="fa fa-search-plus fa-lg" aria-hidden="true"></i>&nbsp;
+                                <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ng-template #emptyMessage>
+                <div class="alert alert-info" role="alert">
+                    <p>Aucun Produit dans la liste!</p>
+                </div>
+            </ng-template>
+        </div>
+    </ng-container>
+</div>

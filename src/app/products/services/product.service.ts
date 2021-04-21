@@ -27,6 +27,7 @@ export class ProductService {
   }
 
   public getProducts(): Observable<Product[]> {
+    const host = Math.random() > 0.2 ? environment.host : environment.unreachableHost;
     return this.http.get<Product[]>(this.host + '/products');
   }
 

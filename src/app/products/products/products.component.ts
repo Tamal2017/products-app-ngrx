@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../model/product';
-import { ProductService } from '../services/product.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { GetAllProductsAction } from 'src/app/ngrx/products.action';
+import { ProductsState, ProductsStateEnum } from 'src/app/ngrx/products.reducer';
 
 @Component({
   selector: 'app-products',
@@ -9,16 +12,13 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductsComponent implements OnInit {
 
-  products: Array<Product> = [];
-
-  constructor(private productService: ProductService) { }
+  constructor(private store: Store<any>) { }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(data => {
-      this.products = data;
-    }, err => {
-      alert('Error: ' + err.message);
-    });
+  }
+
+  onGetAllProducts() {
+    this.store.dispatch(new GetAllProductsAction({}));
   }
 
 }
