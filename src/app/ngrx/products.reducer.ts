@@ -22,14 +22,14 @@ const initState = {
     dataState: ProductsStateEnum.INITIAL
 };
 
-export function ProductsReducer(state: ProductsState = initState, action: ProductsActions): ProductsState {
+export function ProductsReducer(state = initState, action: Action): ProductsState {
     switch (action.type) {
         case ProductsActionsType.GET_ALL_PRODUCTS:
             return { ...state, dataState: ProductsStateEnum.LOADING };
         case ProductsActionsType.GET_ALL_PRODUCTS_SUCCESS:
-            return { ...state, dataState: ProductsStateEnum.LOADED, products: action.payload };
+            return { ...state, dataState: ProductsStateEnum.LOADED, products: (action as ProductsActions).payload };
         case ProductsActionsType.GET_ALL_PRODUCTS_ERROR:
-            return { ...state, dataState: ProductsStateEnum.ERROR, errorMessage: action.payload };
+            return { ...state, dataState: ProductsStateEnum.ERROR, errorMessage: (action as ProductsActions).payload };
         default:
             return { ...state };
     }
